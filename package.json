@@ -8,6 +8,11 @@
       "packages/foundry"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/craftzdog/cm6-themes.git"
+  },
+  "requires": true,
   "scripts": {
     "account": "yarn workspace @se-2/foundry account",
     "fork": "yarn workspace @se-2/foundry fork",
@@ -30,7 +35,18 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
+    "@types/prettier": "^3",
+    "@types/prompt-sync": "^4",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.6.1",
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/contracts-upgradeable": "^4.9.3",
+    "dotenv": "^16.3.1",
+    "eth-crypto": "^2.6.0",
+    "prettier": "^3.0.0",
+    "prompt-sync": "^4.2.0"
   }
 }

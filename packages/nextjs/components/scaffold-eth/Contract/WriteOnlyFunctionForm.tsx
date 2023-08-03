@@ -1,9 +1,11 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+// import { TestFunctions } from "./FunctionsSandboxLibrary/TestFunctions";
 import { TransactionReceipt } from "@ethersproject/abstract-provider";
 import { BigNumber } from "ethers";
 import { FunctionFragment } from "ethers/lib/utils";
 import { useContractWrite, useNetwork, useWaitForTransaction } from "wagmi";
 import {
+  CodeMirrorInput,
   ContractInput,
   IntegerInput,
   TxReceipt,
@@ -96,12 +98,30 @@ export const WriteOnlyFunctionForm = ({
       />
     );
   });
+
   const zeroInputs = inputs.length === 0 && !functionFragment.payable;
+
+  const [codeString, setCodeString] = useState("");
+
+  const chainlinkFunction = () => {
+    console.log("click");
+    // TestFunctions();
+  };
 
   return (
     <div className="py-5 space-y-3 first:pt-0 last:pb-1">
       <div className={`flex gap-3 ${zeroInputs ? "flex-row justify-between items-center" : "flex-col"}`}>
         <p className="font-medium my-0 break-words">{functionFragment.name}</p>
+        {functionFragment.name == "setGreeting" ? (
+          <div className="bg-[#282c34] rounded-md">
+            <div className="text-xs  text-white p-2">Javscript Code</div>
+            <CodeMirrorInput codeString={codeString} onChange={e => setCodeString(e)}></CodeMirrorInput>
+          </div>
+        ) : (
+          ""
+        )}
+
+        <button onClick={chainlinkFunction}>button</button>
         {inputs}
         {functionFragment.payable ? (
           <IntegerInput
